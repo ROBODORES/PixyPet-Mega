@@ -104,9 +104,6 @@ public class Robot extends IterativeRobot {
 	
 	@Override
 	public void teleopPeriodic() {
-		System.out.println("Pos: " + drive.leftDist());
-		System.out.println("Vel: " + drive.leftVelocity());
-		if (jR.getRawButton(1)) {
 		if (pixy.update()) {
 			pan += (160 - pixy.objectX[0])/2.0;
 			pan  = (int)etc.constrain((double)pan, 0, 1000);
@@ -134,10 +131,6 @@ public class Robot extends IterativeRobot {
 			}
 		}
 		pixy.setPanTilt(pan, tilt);
-		} else {
-			jR.setTwistChannel(3);
-			drive.singleJoystickDrive(-jR.getY(), -jR.getTwist(), false);
-		}
 	}
 	
 	@Override
